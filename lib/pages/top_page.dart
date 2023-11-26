@@ -125,7 +125,6 @@ class _TopPageState extends State<TopPage> {
             stream: quizCollection
                 .where('name', isNotEqualTo: null)
                 .orderBy('createdDate', descending: true)
-                .limit(10)
                 .snapshots(),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               //ロード中の状態を確認
