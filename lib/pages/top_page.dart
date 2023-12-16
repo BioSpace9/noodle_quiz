@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:noodle_quiz/AppOpenAdManager.dart';
 import 'package:noodle_quiz/methods.dart';
@@ -83,7 +84,7 @@ class _TopPageState extends State<TopPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -105,6 +106,7 @@ class _TopPageState extends State<TopPage> {
               tabs: [
                 Tab(icon: Icon(Icons.new_releases), text: '最新投稿'),
                 Tab(icon: Icon(Icons.category), text: 'ジャンル別'),
+                Tab(icon: Icon(Icons.category), text: 'ポリシー')
               ],
             ),
           ),
@@ -112,6 +114,7 @@ class _TopPageState extends State<TopPage> {
             children: [
               buildLatestPostsTab(),
               buildCategoryPostsTab(),
+              buildPolicyTab(),
             ],
           ),
         ),
@@ -123,8 +126,8 @@ class _TopPageState extends State<TopPage> {
         color: Colors.yellow.shade100,
         child: StreamBuilder<QuerySnapshot>(
             stream: quizCollection
-                .where('name', isNotEqualTo: null)
                 .orderBy('createdDate', descending: true)
+                .where('createdDate', isLessThan: Timestamp.now())
                 .snapshots(),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               //ロード中の状態を確認
@@ -221,6 +224,34 @@ class _TopPageState extends State<TopPage> {
         ),
       ),
     );
+  }
+
+  Widget buildPolicyTab() {
+    return Container(
+      color: Colors.yellow.shade100,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            InkWell(
+              onTap: () => _launchURL('https://github.com/BioSpace9/mengan-quest'),
+              child: Text(
+                'プライバシーポリシーを読む',
+                style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue),
+              ),
+            ),
+          ]
+        ),
+      ),
+    );
+  }
+
+  void _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
 }

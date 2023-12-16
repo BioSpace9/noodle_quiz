@@ -58,7 +58,7 @@ Widget viewOptlist(
 Widget viewCategoryList(BuildContext context, String category) {
   return Column(
     children: [
-      const SizedBox(height: 8),
+      const SizedBox(height: 12),
       GestureDetector(
         child: Row(
           children: [
@@ -69,7 +69,7 @@ Widget viewCategoryList(BuildContext context, String category) {
           ],
         ),
         onTap: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(
+          Navigator.push(context, MaterialPageRoute(
               builder: (context) => CategoryPage(category)));
         },
       ),

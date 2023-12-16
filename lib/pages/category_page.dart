@@ -30,7 +30,7 @@ class _CategoryPageState extends State<CategoryPage> {
       child: StreamBuilder<QuerySnapshot>(
           stream: quizCollection
               .where('type', isEqualTo: widget.category)
-              .where('name', isNotEqualTo: null)
+              .where('createdDate', isLessThan: Timestamp.now())
               .orderBy('createdDate', descending: true)
               .snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -59,45 +59,57 @@ class _CategoryPageState extends State<CategoryPage> {
             }
 
 
-            return Column(
-              children: [
-                const SizedBox (height: 100),
-                Expanded(
-                  child: ListView(
-                    children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-
-                      final Quiz fetchQuiz = Quiz(
-                        name: data['name'],
-                        region: data['region'],
-                        type: data['type'],
-                        opt1: data['opt1'],
-                        opt2: data['opt2'],
-                        opt3: data['opt3'],
-                        comment: data['comment'],
-                        image: data['image'],
-                        createdDate: data['createdDate'],
-                      );
-
-                      return Card(
-                        child: ListTile(
-                          leading: Icon(Icons.ramen_dining),
-                          title: Text(
-                            fetchQuiz.title,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          tileColor: Colors.white,
-                          onTap: () {
-                            fetchQuiz.answer = null;
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => QuizPage(fetchQuiz)));
-                          },
-                        ),
-                      );
-                    }).toList(),
-                  ),
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+                title: Text(
+                  widget.category,
+                  style:const TextStyle(fontSize:16, fontWeight: FontWeight.bold),
                 ),
-              ],
+              ),
+              body: Container(
+                color: Colors.yellow.shade100,
+                child: Column(
+                  children: [
+                    const SizedBox (height: 10),
+                    Expanded(
+                      child: ListView(
+                        children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                          Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+
+                          final Quiz fetchQuiz = Quiz(
+                            name: data['name'],
+                            region: data['region'],
+                            type: data['type'],
+                            opt1: data['opt1'],
+                            opt2: data['opt2'],
+                            opt3: data['opt3'],
+                            comment: data['comment'],
+                            image: data['image'],
+                            createdDate: data['createdDate'],
+                          );
+
+                          return Card(
+                            child: ListTile(
+                              leading: Icon(Icons.ramen_dining),
+                              title: Text(
+                                fetchQuiz.title,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              tileColor: Colors.white,
+                              onTap: () {
+                                fetchQuiz.answer = null;
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => QuizPage(fetchQuiz)));
+                              },
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
           }
       ),
