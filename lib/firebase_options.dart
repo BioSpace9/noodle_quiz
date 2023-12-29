@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBrrNTO0VPEXU0CEp2u5CyZN3TAA7Q2J_Y',
-    appId: '1:1009721595166:android:57dfed1cbbee456c10650f',
+    appId: '1:1009721595166:android:66ea5172c58ffb4910650f',
     messagingSenderId: '1009721595166',
     projectId: 'noodle-quiz',
     storageBucket: 'noodle-quiz.appspot.com',
@@ -66,10 +66,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDBy5r_VlTEisb7LegXEWQV6ivlQSrGemk',
-    appId: '1:1009721595166:ios:4d7f48b60cba9b2e10650f',
+    appId: '1:1009721595166:ios:22178e43f57b80e610650f',
     messagingSenderId: '1009721595166',
     projectId: 'noodle-quiz',
     storageBucket: 'noodle-quiz.appspot.com',
-    iosBundleId: 'com.example.noodleQuiz',
+    iosBundleId: 'com.example.noodleQuiz.RunnerTests',
   );
 }

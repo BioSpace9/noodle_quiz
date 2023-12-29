@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="noodle_quiz"
+        android:label="麺顔クエスト"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

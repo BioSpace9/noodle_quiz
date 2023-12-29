@@ -9,6 +9,44 @@
       "client_info": {
         "mobilesdk_app_id": "1:1009721595166:android:57dfed1cbbee456c10650f",
         "android_client_info": {
+          "package_name": "com.example.noodle_quiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrrNTO0VPEXU0CEp2u5CyZN3TAA7Q2J_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009721595166:android:770e53a3c653adbd10650f",
+        "android_client_info": {
+          "package_name": "com.example.quiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrrNTO0VPEXU0CEp2u5CyZN3TAA7Q2J_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009721595166:android:66ea5172c58ffb4910650f",
+        "android_client_info": {
           "package_name": "com.noodle_quiz"
         }
       },

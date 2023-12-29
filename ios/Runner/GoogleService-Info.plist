@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.noodleQuiz</string>
+	<string>com.noodle-quiz</string>
 	<key>PROJECT_ID</key>
 	<string>noodle-quiz</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1009721595166:ios:4d7f48b60cba9b2e10650f</string>
+	<string>1:1009721595166:ios:49b2631664fed7cc10650f</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-2284509452520955~2320970645</string>
 </dict>
 </plist>
